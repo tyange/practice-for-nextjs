@@ -24,9 +24,7 @@ export async function getShippingSchedule({
   if (pageSize) {
     searchParams.append("size", pageSize.toString());
   }
-  const url = new URL(
-    `https://v2api.autowini.com/shipping/v3/schedule?${searchParams}`
-  );
+  const url = new URL(`<v2-api-route>/shipping/v3/schedule?${searchParams}`);
   const res = await fetch(url);
   const data: V2Response<{
     totalCount: number;
