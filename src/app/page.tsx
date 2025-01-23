@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { getShippingSchedule } from "@/actions/shipping-schedule.action";
 
-import ScheduleList from "@/components/ui/schedule-list";
+import ScheduleList from "@/components/schedule-list";
 
 export default function Home() {
   const schedules = getShippingSchedule();
