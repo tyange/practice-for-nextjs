@@ -1,6 +1,6 @@
 import { getFilterByVesselType } from "@/actions/filter.action";
 
-export default async function Filter({
+export default async function ShippingScheduleFilter({
   searchParams,
 }: {
   searchParams: {
@@ -19,12 +19,12 @@ export default async function Filter({
   });
 
   return (
-    <div className="p-4 space-y-8">
+    <div className="space-y-8 p-4">
       <div>
-        <h2 className="text-2xl font-bold mb-4">Filter by Vessel Type</h2>
+        <h2 className="mb-4 text-2xl font-bold">Filter by Vessel Type</h2>
         <div className="flex flex-wrap gap-2">
           {data.vesselType.map((vessel) => (
-            <button key={vessel.code} className="px-4 py-2 rounded-full border">
+            <button key={vessel.code} className="rounded-full border px-4 py-2">
               {vessel.name} ({vessel.count})
             </button>
           ))}
@@ -32,10 +32,10 @@ export default async function Filter({
       </div>
 
       <div>
-        <h2 className="text-2xl font-bold mb-4">Filter by Line</h2>
+        <h2 className="mb-4 text-2xl font-bold">Filter by Line</h2>
         <div className="flex flex-wrap gap-2">
           {data.shippingLine.map((line) => (
-            <button key={line.code} className="px-4 py-2 rounded-full border">
+            <button key={line.code} className="rounded-full border px-4 py-2">
               {line.name} ({line.count})
             </button>
           ))}
