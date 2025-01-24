@@ -26,7 +26,7 @@ export async function getShippingSchedule({
   }
 
   const url = new URL(
-    `${process.env.API_ROUTE}/shipping/v3/schedule?${searchParams}`
+    `${process.env.V2_API_ROUTE}/shipping/v3/schedule?${searchParams}`
   );
   const res = await fetch(url);
   const data: V2Response<{

@@ -15,7 +15,10 @@ export default async function Home({
 }) {
   return (
     <div className="w-screen h-screen">
-      <main>THIS IS MAIN PAGE</main>
+      <Filter searchParams={searchParams} />
+      <Suspense fallback={<p>Loading...</p>}>
+        <ScheduleList searchParams={searchParams} />
+      </Suspense>
     </div>
   );
 }

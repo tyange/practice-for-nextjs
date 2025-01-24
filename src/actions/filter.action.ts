@@ -20,7 +20,7 @@ export async function getFilterByVesselType({
   }
 
   const url = new URL(
-    `${process.env.API_ROUTE}/shipping/schedule/count?${searchParams}`
+    `${process.env.V2_API_ROUTE}/shipping/schedule/count?${searchParams}`
   );
 
   const res = await fetch(url);
