@@ -1,7 +1,22 @@
 import { getFilterByVesselType } from "@/actions/filter.action";
 
-export default async function Filter() {
-  const data = await getFilterByVesselType();
+export default async function Filter({
+  searchParams,
+}: {
+  searchParams: {
+    page?: string;
+    size?: string;
+    vesselTypeCodeList?: string;
+    shippingLineCodeList?: string;
+  };
+}) {
+  const vesselTypes = searchParams.vesselTypeCodeList?.split(",") || [];
+  const shippingLines = searchParams.shippingLineCodeList?.split(",") || [];
+
+  const data = await getFilterByVesselType({
+    vesselTypeCodeList: vesselTypes,
+    shippingLineCodeList: shippingLines,
+  });
 
   return (
     <div className="p-4 space-y-8">

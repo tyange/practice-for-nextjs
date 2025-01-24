@@ -24,6 +24,7 @@ export async function getShippingSchedule({
   if (pageSize) {
     searchParams.append("size", pageSize.toString());
   }
+
   const url = new URL(
     `${process.env.API_ROUTE}/shipping/v3/schedule?${searchParams}`
   );

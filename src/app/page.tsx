@@ -1,9 +1,7 @@
 import { Suspense } from "react";
 
-import { getShippingSchedule } from "@/actions/shipping-schedule.action";
-
 import ScheduleList from "@/components/schedule-list";
-import Filter from "@/components/filter";
+import Filter from "@/components/filter/filter";
 
 export default async function Home({
   searchParams,
@@ -17,7 +15,7 @@ export default async function Home({
 }) {
   return (
     <div className="w-screen h-screen">
-      <Filter />
+      <Filter searchParams={searchParams} />
       <Suspense fallback={<p>Loading...</p>}>
         <ScheduleList searchParams={searchParams} />
       </Suspense>
