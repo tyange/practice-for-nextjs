@@ -18,7 +18,7 @@ export default function Pagination({
   const getPageNumbers = () => {
     const pageNumbers = [];
     let start = Math.max(1, currentPage - 4);
-    let end = Math.min(start + 9, totalPages);
+    const end = Math.min(start + 9, totalPages);
 
     if (end - start < 9) {
       start = Math.max(1, end - 9);
@@ -36,7 +36,7 @@ export default function Pagination({
         <select
           value={perPage}
           onChange={(e) => onPerPageChange(Number(e.target.value))}
-          className="appearance-none w-36 px-4 py-2 border border-green-600 rounded-md pr-10 focus:outline-none"
+          className="w-36 appearance-none rounded-md border border-green-600 px-4 py-2 pr-10 focus:outline-none"
         >
           {perPageOptions.map((option) => (
             <option key={option} value={option}>
@@ -44,7 +44,7 @@ export default function Pagination({
             </option>
           ))}
         </select>
-        <div className="absolute right-3 top-3 pointer-events-none">▼</div>
+        <div className="pointer-events-none absolute right-3 top-3">▼</div>
       </div>
 
       <div className="flex items-center gap-1">
@@ -67,12 +67,11 @@ export default function Pagination({
           <button
             key={page}
             onClick={() => onPageChange(page)}
-            className={`w-8 h-8 flex items-center justify-center rounded-md
-              ${
-                currentPage === page
-                  ? "border border-green-600 bg-green-50 text-green-600"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
+            className={`flex h-8 w-8 items-center justify-center rounded-md ${
+              currentPage === page
+                ? "border border-green-600 bg-green-50 text-green-600"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
           >
             {page}
           </button>

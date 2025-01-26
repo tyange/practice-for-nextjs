@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  railingSlash: false,
+  trailingSlash: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.autowini.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

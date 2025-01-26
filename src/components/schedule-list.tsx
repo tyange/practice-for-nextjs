@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { getShippingSchedule } from "@/actions/shipping-schedule.action";
 
 import ClientPagination from "./client-pagination";
@@ -32,19 +34,19 @@ export default async function ScheduleList({
           <table className="w-full border-collapse bg-white">
             <thead>
               <tr className="bg-gray-100">
-                <th className="p-3 text-left border">Line</th>
-                <th className="p-3 text-left border">Vessel Name & Voy No.</th>
-                <th className="p-3 text-left border">Vessel Type</th>
-                <th className="p-3 text-left border whitespace-nowrap">
+                <th className="border p-3 text-left">Line</th>
+                <th className="border p-3 text-left">Vessel Name & Voy No.</th>
+                <th className="border p-3 text-left">Vessel Type</th>
+                <th className="whitespace-nowrap border p-3 text-left">
                   출발 항구
                 </th>
-                <th className="p-3 text-left border whitespace-nowrap">
+                <th className="whitespace-nowrap border p-3 text-left">
                   도착 항구
                 </th>
-                <th className="p-3 text-left border whitespace-nowrap">
+                <th className="whitespace-nowrap border p-3 text-left">
                   출발 예정일
                 </th>
-                <th className="p-3 text-left border whitespace-nowrap">
+                <th className="whitespace-nowrap border p-3 text-left">
                   도착 예정일
                 </th>
               </tr>
@@ -55,16 +57,17 @@ export default async function ScheduleList({
                   key={schedule.shippingScheduleCode}
                   className="hover:bg-gray-50"
                 >
-                  <td className="p-3 border">{schedule.line}</td>
-                  <td className="p-3 border">
+                  <td className="border p-3">{schedule.line}</td>
+                  <td className="border p-3">
                     {schedule.vesselName} {schedule.voyNo}
                   </td>
-                  <td className="p-3 border">{schedule.vesselTypeName}</td>
-                  <td className="p-3 border">
+                  <td className="border p-3">{schedule.vesselTypeName}</td>
+                  <td className="border p-3">
                     <div className="flex items-center gap-2">
                       <span className="w-6">
-                        <img
+                        <Image
                           src={`https://image.autowini.com/resources/IMG/renew/common/flag/${schedule.fromCountryCode}.png`}
+                          alt={schedule.fromCountryName}
                         />
                       </span>
                       <div>
@@ -75,11 +78,12 @@ export default async function ScheduleList({
                       </div>
                     </div>
                   </td>
-                  <td className="p-3 border">
+                  <td className="border p-3">
                     <div className="flex items-center gap-2">
                       <span className="w-6">
-                        <img
+                        <Image
                           src={`https://image.autowini.com/resources/IMG/renew/common/flag/${schedule.toCountryCode}.png`}
+                          alt={schedule.toCountryName}
                         />
                       </span>
                       <div>
@@ -90,10 +94,10 @@ export default async function ScheduleList({
                       </div>
                     </div>
                   </td>
-                  <td className="p-3 border whitespace-nowrap">
+                  <td className="whitespace-nowrap border p-3">
                     {formatDate(schedule.departureDateTime)}
                   </td>
-                  <td className="p-3 border whitespace-nowrap">
+                  <td className="whitespace-nowrap border p-3">
                     {schedule.arrivalDateTime
                       ? formatDate(schedule.arrivalDateTime)
                       : "-"}

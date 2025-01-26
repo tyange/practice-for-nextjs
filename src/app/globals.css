@@ -2,3 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Swiper */
+.swiper.main-banner {
+    width: 100%;
+    height: 20rem;
+}
+.swiper.main-banner .swiper-pagination {
+    display: flex;
+    justify-content: left;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}
+.swiper.main-banner .swiper-pagination-bullet {
+    opacity: 0.5;
+}
+.swiper.main-banner .swiper-pagination-bullet-active {
+    background: #fff;
+    opacity: 1;
+}

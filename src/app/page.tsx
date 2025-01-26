@@ -1,10 +1,13 @@
 import MainHeader from "@/components/main-header";
+import MainBanners from "@/components/main-banners";
 
-export default async function Main() {
+export default function Main() {
   return (
     <div className="h-screen w-screen">
       <MainHeader />
-      <main>THIS IS MAIN PAGE</main>
+      <main>
+        <MainBanners />
+      </main>
     </div>
   );
 }

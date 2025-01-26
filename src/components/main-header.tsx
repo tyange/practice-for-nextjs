@@ -7,7 +7,7 @@ export default function MainHeader() {
     <header>
       <nav className="flex w-full items-center justify-between p-4">
         <div>
-          <Link href="/">탈토위니</Link>
+          <Link href="/">위니를 위니라 부르지 못하고</Link>
         </div>
         <div>
           <ul className="flex gap-4">

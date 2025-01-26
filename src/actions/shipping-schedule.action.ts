@@ -6,8 +6,8 @@ import { V2Response } from "../types/v2-response.types";
 export async function getShippingSchedule({
   page,
   pageSize,
-  vesselTypeCodeList,
-  shippingLineCodeList,
+  // vesselTypeCodeList,
+  // shippingLineCodeList,
 }: {
   page?: number;
   pageSize?: number;
@@ -26,7 +26,7 @@ export async function getShippingSchedule({
   }
 
   const url = new URL(
-    `${process.env.V2_API_ROUTE}/shipping/v3/schedule?${searchParams}`
+    `${process.env.V2_API_ROUTE}/shipping/v3/schedule?${searchParams}`,
   );
   const res = await fetch(url);
   const data: V2Response<{

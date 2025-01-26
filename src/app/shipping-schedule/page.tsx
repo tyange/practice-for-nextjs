@@ -1,21 +1,23 @@
 import { Suspense } from "react";
-import { SearchParams } from "next/dist/server/request/search-params";
 
 import ScheduleList from "@/components/schedule-list";
 import ShippingScheduleFilter from "@/components/shipping-schedule-filter";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: SearchParams;
-}) {
-  const params = await searchParams;
+type Params = Promise<{
+  page?: string;
+  size?: string;
+  vesselTypeCodeList?: string;
+  shippingLineCodeList?: string;
+}>;
+
+export default async function Home({ params }: { params: Params }) {
+  const searchParams = await params;
 
   return (
     <div className="h-screen w-screen">
-      <ShippingScheduleFilter searchParams={params} />
+      <ShippingScheduleFilter searchParams={searchParams} />
       <Suspense fallback={<p>Loading...</p>}>
-        <ScheduleList searchParams={params} />
+        <ScheduleList searchParams={searchParams} />
       </Suspense>
     </div>
   );
