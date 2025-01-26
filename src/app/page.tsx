@@ -1,6 +1,7 @@
 import MainHeader from "@/components/main-header";
 import MainBanners from "@/components/main-banners";
 import CategoryMenu from "@/components/category-menu/category-menu";
+import DearCustomer from "@/components/dear-customer";
 
 export default function Main() {
   return (
@@ -9,6 +10,7 @@ export default function Main() {
       <main>
         <MainBanners />
         <CategoryMenu />
+        <DearCustomer />
       </main>
     </div>
   );
