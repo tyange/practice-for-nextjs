@@ -1,0 +1,150 @@
+.mainCategory ul {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 2rem;
+    gap: 2.315rem;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.category {
+  flex: 0 0 auto;
+  width: auto;
+  white-space: nowrap;
+}
+
+.categoryButton {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 5rem;
+}
+
+.categoryButton span:last-child {
+  font-weight: bold;
+}
+
+.baseIcon {
+  display: block;
+  margin: 0 auto;
+  width: 4rem;
+  height: 4.125rem;
+  background: url(https://image.autowini.com/resources/IMG/markup/main_sprite.webp) no-repeat;
+}
+
+.icCate-cate1 {
+  composes: baseIcon;
+  background-position: -6px -90px;
+}
+
+.icCate-cate2 {
+  composes: baseIcon;
+  background-position: -88px -90px;
+}
+
+.icCate-cate3 {
+  composes: baseIcon;
+  background-position: -168px -90px;
+}
+
+.icCate-cate4 {
+  composes: baseIcon;
+  background-position: -406px -90px;
+}
+
+.icCate-cate5 {
+  composes: baseIcon;
+  background-position: -568px -90px;
+}
+
+.icCate-cate6 {
+  composes: baseIcon;
+  background-position: -490px -90px;
+}
+
+.icCate-cate7 {
+  composes: baseIcon;
+  background-position: -648px -90px;
+}
+
+.icCate-cate8 {
+  composes: baseIcon;
+  background-position: -246px -90px;
+}
+
+.icCate-cate9 {
+  composes: baseIcon;
+  background-position: -328px -90px;
+}
+
+.icCate-cate10 {
+  composes: baseIcon;
+  background-position: -728px -90px;
+}
+
+.icCate-cate11 {
+  composes: baseIcon;
+  background-position: -808px -90px;
+}
+
+.baseIcon2 {
+  display: block;
+  margin: 0 -10px;
+  width: 8rem;
+  height: 4.125rem;
+  background: url(https://image.autowini.com/resources/IMG/markup/main_sprite.webp) no-repeat;
+  transform: scale(0.7);
+}
+
+.icCate2-cate1 {
+  composes: baseIcon2;
+  background-position: -1367px -25px;
+}
+
+.icCate2-cate2 {
+  composes: baseIcon2;
+  background-position: -1367px -146px;
+}
+
+.icCate2-cate3 {
+  composes: baseIcon2;
+  background-position: -1367px -266px;
+}
+
+.icCate2-cate4 {
+  composes: baseIcon2;
+  background-position: -1367px -390px;
+}
+
+.icCate2-cate5 {
+  composes: baseIcon2;
+  background-position: -1367px -515px;
+}
+
+.icCate2-cate6 {
+  composes: baseIcon2;
+  background-position: -1367px -634px;
+}
+
+.icCate2-cate7 {
+  composes: baseIcon2;
+  background-position: -1367px -756px;
+}
+
+.icCate2-cate8 {
+  composes: baseIcon2;
+  background-position: -1367px -878px;
+}
+
+.icCate2-cate9 {
+  composes: baseIcon2;
+  background-position: -1367px -998px;
+}
+
+.icCate2-cate10 {
+  composes: baseIcon2;
+  background-position: -1367px -1124px;
+}

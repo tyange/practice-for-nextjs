@@ -1,4 +1,4 @@
-import * as styles from "./category-menu.css";
+import * as styles from "./category-menu.module.css";
 
 type CategoryItem = {
   name: string;
@@ -138,9 +138,11 @@ export default function CategoryMenu() {
           <li key={category.name} className={styles.category}>
             <a className={styles.categoryButton} href={category.href}>
               {category.menu === 1 ? (
-                <span className={styles.icCate[category.iconClass]}></span>
+                <span className={styles[`icCate-${category.iconClass}`]}></span>
               ) : (
-                <span className={styles.icCate2[category.iconClass]}></span>
+                <span
+                  className={styles[`icCate2-${category.iconClass}`]}
+                ></span>
               )}
               <span>{category.name}</span>
             </a>
