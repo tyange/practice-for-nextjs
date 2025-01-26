@@ -1,6 +1,6 @@
 import MainHeader from "@/components/main-header";
 import MainBanners from "@/components/main-banners";
-import CategoryMenu from "@/components/category-menu";
+import CategoryMenu from "@/components/category-menu/category-menu";
 
 export default function Main() {
   return (
