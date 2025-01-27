@@ -64,8 +64,9 @@ export default async function ScheduleList({
                   <td className="border p-3">{schedule.vesselTypeName}</td>
                   <td className="border p-3">
                     <div className="flex items-center gap-2">
-                      <span className="w-6">
+                      <span className="relative h-4 w-6">
                         <Image
+                          fill
                           src={`https://image.autowini.com/resources/IMG/renew/common/flag/${schedule.fromCountryCode}.png`}
                           alt={schedule.fromCountryName}
                         />
@@ -80,8 +81,9 @@ export default async function ScheduleList({
                   </td>
                   <td className="border p-3">
                     <div className="flex items-center gap-2">
-                      <span className="w-6">
+                      <span className="relative h-4 w-6">
                         <Image
+                          fill
                           src={`https://image.autowini.com/resources/IMG/renew/common/flag/${schedule.toCountryCode}.png`}
                           alt={schedule.toCountryName}
                         />

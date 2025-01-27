@@ -1,17 +1,24 @@
 "use client";
 
-import { ChangeEvent } from "react";
-
-import { useState } from "react";
+import { useState, ChangeEvent, useActionState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Form from "next/form";
-import { UserRound, Lock, Square, SquareCheckBig } from "lucide-react";
+import {
+  UserRound,
+  Lock,
+  Square,
+  SquareCheckBig,
+  LoaderCircle,
+} from "lucide-react";
 
 import { login } from "@/actions/auth.actions";
 
 export default function LoginForm() {
   const [isRemember, setIsRemember] = useState(false);
+  const [state, formAction, pending] = useActionState(login, {
+    status: "idle",
+    message: "",
+  });
 
   function handleRemember(e: ChangeEvent<HTMLInputElement>) {
     setIsRemember(e.target.checked);
@@ -35,21 +42,30 @@ export default function LoginForm() {
           <span className="text-xl">No. 1 Auto Trading Platform in Korea.</span>
         </div>
       </div>
-      <Form
-        action={login}
+      <form
+        action={formAction}
         className="flex w-96 flex-col items-center justify-center gap-3"
       >
         <label className="flex w-full rounded-lg border border-gray-300 p-3">
           <UserRound size={32} className="flex-shrink-0" color="#8d8b8b" />
           <input type="text" name="username" className="w-full flex-shrink" />
         </label>
-        <label className="flex w-full rounded-lg border border-gray-300 p-3">
+        <label
+          className={`flex w-full rounded-lg border p-3 ${state.status === "error" ? "border-red-500" : "border-gray-300"}`}
+        >
           <Lock size={32} className="flex-shrink-0" color="#8d8b8b" />
           <input
             type="password"
             name="password"
             className="w-full flex-shrink"
           />
+          {state.message && (
+            <p
+              className={`mt-1 text-sm ${state.status === "error" ? "text-red-500" : "text-gray-500"}`}
+            >
+              {state.message}
+            </p>
+          )}
         </label>
         <div className="flex w-full justify-start">
           <label className="flex items-center gap-2">
@@ -67,11 +83,18 @@ export default function LoginForm() {
           </label>
         </div>
         <div className="h-14 w-full">
-          <button className="h-full w-full rounded-lg bg-[#00ab68] text-lg font-medium text-white">
-            Sign in
+          <button
+            className={`h-full w-full rounded-lg ${!pending ? "bg-[#00ab68]" : "bg-gray-400"} flex items-center justify-center text-lg font-medium text-white`}
+            disabled={pending}
+          >
+            {pending ? (
+              <LoaderCircle size={32} color="#fff" className="animate-spin" />
+            ) : (
+              <span>Sign in</span>
+            )}
           </button>
         </div>
-      </Form>
+      </form>
       <div className="h-14 w-96">
         <button className="h-full w-full rounded-lg border border-[#D8DDE1] bg-[#F7F9FA] text-lg font-medium text-[#45484B]">
           Sign up
