@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, ChangeEvent, useActionState } from "react";
+import {
+  useState,
+  ChangeEvent,
+  useActionState,
+  FocusEvent,
+  useEffect,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,6 +20,7 @@ import {
 import { login } from "@/actions/auth.actions";
 
 export default function LoginForm() {
+  const [isError, setIsError] = useState(false);
   const [isRemember, setIsRemember] = useState(false);
   const [state, formAction, pending] = useActionState(login, {
     status: "idle",
@@ -24,6 +31,26 @@ export default function LoginForm() {
     setIsRemember(e.target.checked);
     // TODO: remember logic
   }
+
+  function handleFocus(e: FocusEvent<HTMLFormElement>) {
+    if (state.status !== "error") {
+      return;
+    }
+
+    if (!isError) {
+      return;
+    }
+
+    setIsError(false);
+  }
+
+  useEffect(() => {
+    if (state.status !== "error") {
+      return;
+    }
+
+    setIsError(true);
+  }, [state]);
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center gap-5">
@@ -45,28 +72,27 @@ export default function LoginForm() {
       <form
         action={formAction}
         className="flex w-96 flex-col items-center justify-center gap-3"
+        onFocus={handleFocus}
       >
         <label className="flex w-full rounded-lg border border-gray-300 p-3">
           <UserRound size={32} className="flex-shrink-0" color="#8d8b8b" />
           <input type="text" name="username" className="w-full flex-shrink" />
         </label>
-        <label
-          className={`flex w-full rounded-lg border p-3 ${state.status === "error" ? "border-red-500" : "border-gray-300"}`}
-        >
+        <label className={`flex w-full rounded-lg border border-gray-300 p-3`}>
           <Lock size={32} className="flex-shrink-0" color="#8d8b8b" />
           <input
             type="password"
             name="password"
             className="w-full flex-shrink"
           />
-          {state.message && (
-            <p
-              className={`mt-1 text-sm ${state.status === "error" ? "text-red-500" : "text-gray-500"}`}
-            >
-              {state.message}
-            </p>
-          )}
         </label>
+        {isError && state.message && (
+          <p
+            className={`mt-1 text-sm ${state.status === "error" ? "text-red-500" : "text-gray-500"}`}
+          >
+            {state.message}
+          </p>
+        )}
         <div className="flex w-full justify-start">
           <label className="flex items-center gap-2">
             <input

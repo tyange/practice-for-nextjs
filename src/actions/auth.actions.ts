@@ -14,12 +14,12 @@ export async function login(prevState: any, formData: FormData) {
     if (res.status === 401) {
       return {
         status: "error",
-        message: "Invalid Password.",
+        message: "Invalid Password",
       };
     } else {
       return {
         status: "error",
-        message: "Unexpected Error.",
+        message: "Unexpected Error",
       };
     }
   }
