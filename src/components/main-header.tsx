@@ -1,9 +1,14 @@
 import Link from "next/link";
 
-import { Earth, UserRound } from "lucide-react";
+import { cookies } from "next/headers";
 import Image from "next/image";
+import { Earth, UserRound, UserRoundCog } from "lucide-react";
 
-export default function MainHeader() {
+export default async function MainHeader() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token");
+  const isLoggedIn = !!token;
+
   return (
     <header>
       <nav className="flex w-full items-center justify-between p-4">
@@ -19,8 +24,8 @@ export default function MainHeader() {
         <div>
           <ul className="flex gap-4">
             <li>
-              <Link href="/">
-                <UserRound />
+              <Link href={isLoggedIn ? "/my-wini" : "/joinfree/login"}>
+                {isLoggedIn ? <UserRoundCog /> : <UserRound />}
               </Link>
             </li>
             <li>
