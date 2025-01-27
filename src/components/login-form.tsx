@@ -95,11 +95,6 @@ export default function LoginForm() {
           </button>
         </div>
       </form>
-      <div className="h-14 w-96">
-        <button className="h-full w-full rounded-lg border border-[#D8DDE1] bg-[#F7F9FA] text-lg font-medium text-[#45484B]">
-          Sign up
-        </button>
-      </div>
     </div>
   );
 }
