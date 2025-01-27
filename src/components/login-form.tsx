@@ -1,21 +1,9 @@
 "use client";
 
-import {
-  useState,
-  ChangeEvent,
-  useActionState,
-  FocusEvent,
-  useEffect,
-} from "react";
+import { useState, useActionState, FocusEvent, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  UserRound,
-  Lock,
-  Square,
-  SquareCheckBig,
-  LoaderCircle,
-} from "lucide-react";
+import { UserRound, Lock, LoaderCircle } from "lucide-react";
 
 import { login } from "@/actions/auth.actions";
 
