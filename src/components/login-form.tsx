@@ -21,16 +21,10 @@ import { login } from "@/actions/auth.actions";
 
 export default function LoginForm() {
   const [isError, setIsError] = useState(false);
-  const [isRemember, setIsRemember] = useState(false);
   const [state, formAction, pending] = useActionState(login, {
     status: "idle",
     message: "",
   });
-
-  function handleRemember(e: ChangeEvent<HTMLInputElement>) {
-    setIsRemember(e.target.checked);
-    // TODO: remember logic
-  }
 
   function handleFocus(e: FocusEvent<HTMLFormElement>) {
     if (state.status !== "error") {
@@ -93,21 +87,6 @@ export default function LoginForm() {
             {state.message}
           </p>
         )}
-        <div className="flex w-full justify-start">
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              className="hidden appearance-none"
-              onChange={handleRemember}
-            />
-            {isRemember ? (
-              <SquareCheckBig size={32} color="#00ab68" />
-            ) : (
-              <Square size={32} color="#8d8b8b" />
-            )}
-            <span>Remember Me</span>
-          </label>
-        </div>
         <div className="h-14 w-full">
           <button
             className={`h-full w-full rounded-lg ${!pending ? "bg-[#00ab68]" : "bg-gray-400"} flex items-center justify-center text-lg font-medium text-white`}
