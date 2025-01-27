@@ -1,6 +1,10 @@
 "use server";
 
-export async function login(prevState: any, formData: FormData) {
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { createSession } from "@/lib/session";
+
+export async function login(_: any, formData: FormData) {
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
@@ -24,5 +28,14 @@ export async function login(prevState: any, formData: FormData) {
     }
   }
 
-  return await res.json();
+  const data = await res.json();
+
+  createSession(data.userId);
+  redirect("/my-wini");
+}
+
+export async function logout() {
+  const cookieStore = await cookies();
+  cookieStore.delete({ name: "token", path: "/" });
+  redirect("/");
 }

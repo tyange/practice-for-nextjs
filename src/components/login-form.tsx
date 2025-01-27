@@ -15,6 +15,10 @@ export default function LoginForm() {
   });
 
   function handleFocus(e: FocusEvent<HTMLFormElement>) {
+    if (!state) {
+      return;
+    }
+
     if (state.status !== "error") {
       return;
     }
@@ -27,7 +31,7 @@ export default function LoginForm() {
   }
 
   useEffect(() => {
-    if (state.status !== "error") {
+    if (!state || state.status !== "error") {
       return;
     }
 
@@ -68,7 +72,7 @@ export default function LoginForm() {
             className="w-full flex-shrink"
           />
         </label>
-        {isError && state.message && (
+        {isError && state && state.message && (
           <p
             className={`mt-1 text-sm ${state.status === "error" ? "text-red-500" : "text-gray-500"}`}
           >
