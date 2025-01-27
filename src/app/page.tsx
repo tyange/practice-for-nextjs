@@ -3,8 +3,13 @@ import MainBanners from "@/components/main-banners";
 import CategoryMenu from "@/components/category-menu/category-menu";
 import DearCustomer from "@/components/dear-customer";
 import MainInspectedVehicle from "@/components/main-inspected-vehicle";
+import { cookies } from "next/headers";
 
-export default function Main() {
+export default async function Main() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token");
+  const isLoggedIn = !!token;
+
   return (
     <>
       <div className="h-screen w-screen">
@@ -12,7 +17,7 @@ export default function Main() {
         <main>
           <MainBanners />
           <CategoryMenu />
-          <DearCustomer />
+          {!isLoggedIn && <DearCustomer />}
           <MainInspectedVehicle />
         </main>
       </div>
