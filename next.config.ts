@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "image.autowini.com",
       },
+      { protocol: "https", hostname: "imagebox.autowini.com" },
+      { protocol: "https", hostname: "picsum.photos" },
     ],
   },
 };
