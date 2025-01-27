@@ -29,7 +29,7 @@ export default async function MainHeader() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="/modal">
                 <Earth />
               </Link>
             </li>

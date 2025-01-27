@@ -40,11 +40,13 @@ export default function Banners({ banners }: BannersProps) {
         {banners.map((banner) => (
           <div key={banner.URL} className="swiper-slide">
             {banner.LINK ? (
-              <Link href={banner.LINK}>
-                <Image fill src={banner.URL} alt={banner.BAN_SUMRY} />
+              <Link href={banner.LINK} className="relative block h-80 w-full">
+                <Image fill src={banner.URL} alt={banner.BAN_SUMRY} priority />
               </Link>
             ) : (
-              <Image fill src={banner.URL} alt={banner.BAN_SUMRY} />
+              <div className="relative h-80 w-full">
+                <Image fill src={banner.URL} alt={banner.BAN_SUMRY} priority />
+              </div>
             )}
           </div>
         ))}

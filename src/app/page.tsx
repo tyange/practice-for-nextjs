@@ -5,13 +5,15 @@ import DearCustomer from "@/components/dear-customer";
 
 export default function Main() {
   return (
-    <div className="h-screen w-screen">
-      <MainHeader />
-      <main>
-        <MainBanners />
-        <CategoryMenu />
-        <DearCustomer />
-      </main>
-    </div>
+    <>
+      <div className="h-screen w-screen">
+        <MainHeader />
+        <main>
+          <MainBanners />
+          <CategoryMenu />
+          <DearCustomer />
+        </main>
+      </div>
+    </>
   );
 }
