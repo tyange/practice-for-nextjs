@@ -5,13 +5,17 @@ import { ChangeEvent } from "react";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Form from "next/form";
 import { UserRound, Lock, Square, SquareCheckBig } from "lucide-react";
 
-export default function LoginForm() {
-  const [isRemeber, setIsRemeber] = useState(false);
+import { login } from "@/actions/auth.actions";
 
-  function handleRemeber(e: ChangeEvent<HTMLInputElement>) {
-    setIsRemeber(e.target.checked);
+export default function LoginForm() {
+  const [isRemember, setIsRemember] = useState(false);
+
+  function handleRemember(e: ChangeEvent<HTMLInputElement>) {
+    setIsRemember(e.target.checked);
+    // TODO: remember logic
   }
 
   return (
@@ -31,26 +35,30 @@ export default function LoginForm() {
           <span className="text-xl">No. 1 Auto Trading Platform in Korea.</span>
         </div>
       </div>
-      <form
-        action=""
+      <Form
+        action={login}
         className="flex w-96 flex-col items-center justify-center gap-3"
       >
         <label className="flex w-full rounded-lg border border-gray-300 p-3">
           <UserRound size={32} className="flex-shrink-0" color="#8d8b8b" />
-          <input type="text" className="w-full flex-shrink" />
+          <input type="text" name="username" className="w-full flex-shrink" />
         </label>
         <label className="flex w-full rounded-lg border border-gray-300 p-3">
           <Lock size={32} className="flex-shrink-0" color="#8d8b8b" />
-          <input type="password" className="w-full flex-shrink" />
+          <input
+            type="password"
+            name="password"
+            className="w-full flex-shrink"
+          />
         </label>
         <div className="flex w-full justify-start">
           <label className="flex items-center gap-2">
             <input
               type="checkbox"
               className="hidden appearance-none"
-              onChange={handleRemeber}
+              onChange={handleRemember}
             />
-            {isRemeber ? (
+            {isRemember ? (
               <SquareCheckBig size={32} color="#00ab68" />
             ) : (
               <Square size={32} color="#8d8b8b" />
@@ -63,7 +71,7 @@ export default function LoginForm() {
             Sign in
           </button>
         </div>
-      </form>
+      </Form>
       <div className="h-14 w-96">
         <button className="h-full w-full rounded-lg border border-[#D8DDE1] bg-[#F7F9FA] text-lg font-medium text-[#45484B]">
           Sign up

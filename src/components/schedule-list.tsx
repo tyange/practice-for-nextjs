@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getShippingSchedule } from "@/actions/shipping-schedule.action";
+import { getShippingSchedule } from "@/actions/shipping-schedule.actions";
 
 import ClientPagination from "./client-pagination";
 

@@ -1,4 +1,4 @@
-import { getFilterByVesselType } from "@/actions/filter.action";
+import { getFilterByVesselType } from "@/actions/filter.actions";
 
 export default async function ShippingScheduleFilter({
   searchParams,
