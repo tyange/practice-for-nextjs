@@ -39,8 +39,8 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <Navigation />
+          {modal}
           {children}
-          {modal && modal}
         </NextIntlClientProvider>
       </body>
     </html>
